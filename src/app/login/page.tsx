@@ -77,7 +77,6 @@ export default function LoginStep() {
           </label>
 
           <div className="mb-9 flex items-center gap-4">
-            
             <svg
               width="24"
               height="24"
@@ -106,7 +105,7 @@ export default function LoginStep() {
           </div>
 
           {/* pin */}
-          <div dir="ltr" className="mb-10 flex justify-end items-end gap-4">
+          <div dir="ltr" className="mb-2 flex justify-end items-end gap-4">
             <div className="flex flex-col items-end">
               <label className="mb-3 block text-sm text-black">
                 الرقم السري
@@ -170,6 +169,14 @@ export default function LoginStep() {
 
           <div className="flex-[0.15]" />
 
+          {/* forgot */}
+          <button
+            type="button"
+            className="text-left mb-6 text-xs font-bold text-slate-800 hover:text-slate-900"
+          >
+            نسيت الرقم السري؟
+          </button>
+
           {/* submit */}
           <button
             type="submit"
@@ -181,14 +188,6 @@ export default function LoginStep() {
             }`}
           >
             {sendCredentials.isPending ? "جاري الإرسال…" : "تسجيل الدخول"}
-          </button>
-
-          {/* forgot */}
-          <button
-            type="button"
-            className="mt-6 text-sm font-bold text-slate-800 hover:text-slate-900"
-          >
-            نسيت الرقم السري؟
           </button>
 
           <div className="flex-1" />

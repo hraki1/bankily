@@ -34,7 +34,7 @@ export default function PhoneSplash() {
           <BankilyLogo className="h-auto w-65 drop-shadow-sm" />
         </header>
 
-        <div className="flex-2" />
+        <div className="flex-1" />
 
         <p
           dir="rtl"
@@ -60,7 +60,7 @@ export default function PhoneSplash() {
           </div>
         </div>
 
-        <footer className="space-y-3.5 px-4 pb-25">
+        <footer className="space-y-3.5 px-4 pb-30">
           {/* ── Smart watch offer ── */}
           <Link
             href="/login"
