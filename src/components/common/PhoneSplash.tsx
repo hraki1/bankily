@@ -30,7 +30,7 @@ export default function PhoneSplash() {
 
       {/* ── Foreground content ── */}
       <div className="relative z-10 flex flex-1 flex-col">
-        <header className="flex justify-center px-6 pt-9">
+        <header className="flex justify-center px-6 pt-0">
           <BankilyLogo className="h-auto w-65 drop-shadow-sm" />
         </header>
 

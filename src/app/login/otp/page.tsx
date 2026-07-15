@@ -207,7 +207,7 @@ export default function OtpPage() {
       {/* ── Body ── */}
       <div className="flex flex-1 flex-col px-7">
         {/* logo */}
-        <div className="flex justify-center pt-10">
+        <div className="flex justify-center pt-0">
           <BankilyLogo className="h-auto w-65" />
         </div>
 
