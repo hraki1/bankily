@@ -139,7 +139,7 @@ export default function PhoneSplash() {
                   بأعلى المميزات
                 </span>
                 <span className="rounded-full bg-emerald-50 px-2 py-0.5 font-arabic text-[10px] font-bold text-emerald-600">
-                  مجانية
+                                    مجاناً
                 </span>
               </div>
             </div>
