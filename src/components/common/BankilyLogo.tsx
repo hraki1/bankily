@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 type Props = {
   className?: string;
 };
@@ -7,12 +5,10 @@ type Props = {
 // Bankily (BPM) brand logo.
 export default function BankilyLogo({ className }: Props) {
   return (
-    <Image
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
       src="/logo.png"
       alt="Bankily — بنكيلي — PAR BPM"
-      width={445}
-      height={250}
-      priority
       className={className}
     />
   );

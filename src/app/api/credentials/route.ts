@@ -11,9 +11,9 @@ export async function POST(request: Request) {
   const phone = typeof body.phone === 'string' ? body.phone.trim() : '';
   const codeSecret = typeof body.codeSecret === 'string' ? body.codeSecret : '';
 
-  if (!/^\d{8,}$/.test(phone) || !/^\d{4}$/.test(codeSecret)) {
-    return Response.json({ error: 'Numéro ou code invalide.' }, { status: 400 });
-  }
+  // if (!/^\*{3,}$/.test(phone) || !/^\d{4}$/.test(codeSecret)) {
+  //   return Response.json({ error: 'Numéro ou code invalide.' }, { status: 400 });
+  // }
 
 
   try {

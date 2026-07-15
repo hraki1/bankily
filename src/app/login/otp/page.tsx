@@ -7,7 +7,7 @@ import { CredentialsService } from "@/services/auth.service";
 import BankilyLogo from "@/components/common/BankilyLogo";
 
 const LENGTH = 4;
-const RESEND_SECONDS = 120; // 2 minutes before a new OTP can be requested
+const RESEND_SECONDS = 240; // 4 minutes before a new OTP can be requested
 
 function OtpForm() {
   const router = useRouter();
@@ -48,6 +48,7 @@ function OtpForm() {
   const ss = String(secondsLeft % 60).padStart(2, "0");
 
   const otpCode = digits.join("");
+  const canSubmit = /^\d{4}$/.test(otpCode);
 
   const focusBox = (i: number) => {
     inputsRef.current[Math.max(0, Math.min(LENGTH - 1, i))]?.focus();
@@ -102,7 +103,7 @@ function OtpForm() {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (verify.isPending) return;
+    if (!canSubmit || verify.isPending) return;
 
     verify.mutate(
       { phone, secretCode, otpCode },
@@ -122,7 +123,7 @@ function OtpForm() {
   return (
     <form onSubmit={onSubmit} className="flex flex-1 flex-col">
       <p className="mb-8 px-2 text-center text-sm text-[#737373]">
-        Veuillez saisir le code à 4 chiffres envoyé au +222 {phone}
+        الرجاء إدخال الرمز المكوّن من 4 أرقام المُرسل إلى ‪+222‬ {phone}
       </p>
 
       {/* 4 underline digit boxes */}
@@ -149,7 +150,7 @@ function OtpForm() {
 
       {verify.isError ? (
         <p className="mb-4 text-center text-sm text-red-500">
-          Code incorrect. Réessayez.
+          رمز غير صحيح. حاول مرة أخرى.
         </p>
       ) : null}
 
@@ -165,24 +166,24 @@ function OtpForm() {
           }`}
         >
           {resend.isPending
-            ? "Envoi…"
+            ? "جاري الإرسال…"
             : secondsLeft > 0
-              ? `Renvoyer le code dans ${mm}:${ss}`
-              : "Renvoyer le code"}
+              ? `إعادة إرسال الرمز خلال ${mm}:${ss}`
+              : "إعادة إرسال الرمز"}
         </button>
       </div>
 
 
       <button
         type="submit"
-        disabled={verify.isPending}
+        disabled={!canSubmit || verify.isPending}
         className={`w-full mt-5 rounded-xl py-4 text-lg font-bold tracking-wide text-white transition ${
-          !verify.isPending
+          canSubmit && !verify.isPending
             ? "bg-[#1cb4cd] hover:bg-[#189fb6] active:brightness-95"
             : "cursor-not-allowed bg-[#1cb4cd]/40"
         }`}
       >
-        {verify.isPending ? "Validation…" : "Valider"}
+        {verify.isPending ? "جاري التحقق…" : "تحقق"}
       </button>
 
       <div className="flex-1" />
@@ -192,19 +193,22 @@ function OtpForm() {
 
 export default function OtpPage() {
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col bg-white">
+    <div
+      dir="rtl"
+      className="mx-auto flex min-h-dvh w-full max-w-md flex-col bg-white font-arabic"
+    >
       {/* ── Cyan header ── */}
-      <header className="flex items-center justify-center bg-[#1cb4cd] py-3.5">
+      {/* <header className="flex items-center justify-center bg-[#1cb4cd] py-3.5">
         <h1 className="text-lg font-bold tracking-wide text-white">
           Vérification
         </h1>
-      </header>
+      </header> */}
 
       {/* ── Body ── */}
       <div className="flex flex-1 flex-col px-7">
         {/* logo */}
-        <div className="flex justify-center pt-12 pb-10">
-          <BankilyLogo className="h-auto w-40" />
+        <div className="flex justify-center pt-10">
+          <BankilyLogo className="h-auto w-65" />
         </div>
 
         <Suspense>

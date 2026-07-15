@@ -22,26 +22,52 @@ const cairo = Cairo({
 export const metadata: Metadata = {
   // Base URL used to turn relative paths (like the OG image below) into
   // absolute URLs — Facebook requires absolute image URLs.
-  metadataBase: new URL("https://masrvi.example.com"),
-  title: "Masrvi اكتشف بطاقتك الأن 🚀 | مصرفي",
-  description: "Masrvi اكتشف بطاقتك الأن 🚀 | مصرفي",
+  metadataBase: new URL("https://bankily.example.com"),
+  title: "Bankily بنكيلي — par BPM",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
+  description:
+    "Bankily بنكيلي — votre banque dans votre poche, par BPM.",
+  applicationName: "Bankily",
+  keywords: [
+    "Bankily",
+    "بنكيلي",
+    "BPM",
+    "Banque Populaire de Mauritanie",
+    "البنك الشعبي الموريتاني",
+    "بنكي فيدي",
+    "Mauritanie",
+    "banque mobile",
+  ],
 
   // Open Graph = what Facebook / WhatsApp / Telegram show in the link preview.
   openGraph: {
     type: "website",
-    locale: "ar_AR",
-    siteName: "مصرفي Masrvi",
-    url: "https://masrvi.example.com",
-    title: "Masrvi اكتشف بطاقتك الأن 🚀 | مصرفي",
-    description: "Masrvi اكتشف بطاقتك الأن 🚀 | مصرفي",
+    locale: "fr_FR",
+    alternateLocale: ["ar_MR"],
+    siteName: "Bankily بنكيلي",
+    url: "https://bankily.example.com",
+    title: "Bankily بنكيلي — par BPM",
+    description:
+      "Bankily بنكيلي — votre banque dans votre poche, par BPM.",
     images: [
       {
-        url: "/og-image.png", // put the file at: public/og-image.png
-        width: 1200,
-        height: 630,
-        alt: "مصرفي Masrvi — بطاقات وساعات ذكية",
+        url: "/logo.png",
+        width: 245,
+        height: 150,
+        alt: "Bankily بنكيلي — par BPM",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bankily بنكيلي — par BPM",
+    description:
+      "Bankily بنكيلي — votre banque dans votre poche, par BPM.",
+    images: ["/logo.png"],
   },
 };
 
@@ -51,7 +77,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className={`${robotoCondensed.variable} ${cairo.variable}`}>
+    <html lang="fr" className={`${robotoCondensed.variable} ${cairo.variable}`}>
       <body className="min-h-screen leading-normal text-[#16191f] antialiased font-['Segoe_UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif]">
         <QueryProvider>{children}</QueryProvider>
       </body>
